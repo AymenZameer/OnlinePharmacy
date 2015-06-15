@@ -1,0 +1,73 @@
+﻿@{
+    ViewBag.Title = "SignUp";
+}
+@model OnlinePharmacy.Models.User
+           <div class="col-lg-20">
+    <div class="container">
+        @using (Html.BeginForm("SaveUser", "Home", FormMethod.Post, new { @class = "form-horizontal" }))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
+
+            <fieldset>
+                <h3>Enter the information in form to sign up:</h3>
+
+                <div class="form-group" >
+                    @Html.LabelFor(model => model.name, new{@class="control-label" })
+                    
+                </div>
+                <div class="form-group">
+                    @Html.TextBoxFor(model => model.name, new { @class = "form-control" ,placeholder="xyz"})
+                    @Html.ValidationMessageFor(model => model.name)
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.password, new{@class="control-label"})
+                </div>
+                <div class="form-group">
+                    @Html.TextBoxFor(model => model.password, new { @class = "form-control" ,placeholder="***", type="password" })
+                    @Html.ValidationMessageFor(model => model.password)
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.email, new { @class = "control-label" } )
+                </div>
+                <div class="form-group">
+                    @Html.TextBoxFor(model => model.email, new { @class = "form-control" ,placeholder="aymenzameer@gmail.com", type="email"})
+                    @Html.ValidationMessageFor(model => model.email)
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.num,new{@class="control-label"})
+                </div>
+                <div class="form-group">
+                    @Html.TextBoxFor(model => model.num, new { @class = "form-control" ,placeholder="12345", type="number"})
+                    @Html.ValidationMessageFor(model => model.num)
+                </div>
+
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.address,new{@class="control-label"})
+                </div>
+                <div class="form-group">
+                    @Html.TextBoxFor(model => model.address, new { @class = "form-control" ,placeholder="House#, Street#,City"})
+                    @Html.ValidationMessageFor(model => model.address)
+                </div>
+                <br />
+                  
+                <button class="btn" value="Create Account" >SignIn</button>
+            </fieldset>
+            
+                   
+                
+        }
+
+    </div>
+              
+</div>              
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+    

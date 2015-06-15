@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="9333a40c5c994225b281fc9ed94e3e4b" Name="Diagram1">
+        <EntityTypeShape EntityType="AccountModel.Category" Width="1.5" PointX="6.375" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="AccountModel.Medicine" Width="1.5" PointX="0.75" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="AccountModel.Order" Width="1.5" PointX="6.125" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="AccountModel.Suggestion" Width="1.5" PointX="4.25" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AccountModel.User" Width="1.5" PointX="0.75" PointY="4.375" IsExpanded="true" />
+        <AssociationConnector Association="AccountModel.FK_Medicine_ToCategories" ManuallyRouted="false" />
+        <AssociationConnector Association="AccountModel.FK_Order_ToTable" ManuallyRouted="false" />
+        <AssociationConnector Association="AccountModel.FK_Order_ToTable_1" ManuallyRouted="false" />
+        <AssociationConnector Association="AccountModel.sug" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,135 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/viewlog.cshtml";
+}
+@using OnlinePharmacy.Models;
+
+
+
+
+<script src="~/Scripts/jquery.mousewheel-3.0.6.pack.js"></script>
+<script>
+    $(document).ready(function () {
+        $(".fancybox").fancybox();
+    });
+</script>
+
+
+    <style>
+        .thumbnail {
+            border: none !important;
+            background: transparent !important;
+            box-shadow: none !important;
+            align-items: center;
+            align-content: center;
+            padding-top: 5em;
+        }
+
+        img {
+            width: 80%;
+            height: 80%;
+        }
+    </style>
+
+
+
+
+    <ul class="nav nav-pills nav-stacked col-sm-2" style:"padding-top:1em">
+        <li>
+
+            <form class="form-horizontal" method="post" action="/LoggedIn/Search2" style="width:250px">
+                <div class="form-group " style="padding-left:2em">
+                    <h4> Search through price:</h4>
+
+                    <div class="col-sm-2" style="width:180px">
+                        <input type="number" class="form-control" name="search2" placeholder="From" required>
+
+                    </div>
+                </div>
+                <div class="form-group" style="padding-left:2em">
+
+                    <div class="col-sm-2" style="width:180px">
+                        <input type="number" class="form-control" name="search3" placeholder="To" required>
+                    </div>
+                </div>
+
+                <div class="form-group" style="padding-left:2em; ">
+                    <div class="col-sm-2">
+                        <button type="submit" class="btn btn-primary" style="font-family:'Book Antiqua'">Search</button>
+                    </div>
+                </div>
+            </form>
+        </li>
+        <li style=" font-family:'Book Antiqua' ;color: black; font:40px; padding-left:2em; ">Categories</li>
+        @foreach (Category c in ViewBag.cat)
+        {
+            <li role="presentation" class="active"><a href="/LoggedIn/Index?s=@c.category1">@c.category1 </a></li>
+        }
+    </ul>
+
+
+
+
+    <div class="row" id="ghi">
+        @foreach (var s in Model)
+        {
+            <div class="col-sm-3 col-md-3">
+                <div class="thumbnail" style="width:100%; height:100%;">
+
+                    <a class="fancybox" href="@Url.Content(s.image)"><img src="@Url.Content(s.image)" /></a>
+                    <div class="caption">
+                        <h5> @s.name </h5>
+                        <p style="font-family:'Book Antiqua'; font-size:20px">@s.description</p>
+
+                        <p>@Html.ActionLink("View", "Meddet", new { id = s.Id }, new { @class = "btn btn-info" }) </p>
+                    </div>
+                </div>
+            </div>
+
+        }
+    </div>
+
+
+
+
+    @{
+        try
+        {
+
+            string s = TempData["message"].ToString();
+            if (!s.Equals(null))
+            {
+                if (s.Equals("Account Created Successfully :) "))
+                {
+                    <div id="me" class="alert alert-success alert-dismissible" role="alert" style="font-family:'Book Antiqua';font-size:20px;float:right;padding-top:4em">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <strong>@s</strong>
+                    </div>
+                }
+                else if (s.Equals(" Account could not be created "))
+                {
+                    <div id="me" class="alert alert-danger alert-dismissible" role="alert" style="font-family:'Book Antiqua';font-size:20px;float:right;padding-top:4em">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <strong>@s</strong>
+                    </div>
+                }
+                else if (s.Equals("User Does Not Exist"))
+                {
+                    <div id="me" class="alert alert-danger alert-dismissible" role="alert" style="font-family:'Book Antiqua';font-size:20px;float:right;padding-top:4em">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <strong>@s</strong>
+                    </div>
+                }
+                else if (s.Equals("Account Created Successfully"))
+                {
+                    <div id="me" class="alert alert-danger alert-dismissible" role="alert" style="font-family:'Book Antiqua';font-size:20px;float:right;padding-top:4em;position:fixed">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <strong>@s</strong>
+                    </div>
+                }
+            }
+        }
+        catch (Exception)
+        { }
+    }
+

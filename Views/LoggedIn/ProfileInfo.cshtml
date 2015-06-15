@@ -1,0 +1,24 @@
+﻿@{
+    ViewBag.Title = "ProfileInfo";
+    Layout = "~/Views/Shared/viewlog.cshtml";
+}
+@using OnlinePharmacy.Models
+
+<h2>Profile Information</h2>
+
+<div class="container" style="padding-top:10em; padding-left:22em">
+    
+<pre style="font-family:'Book Antiqua'; font-size:20px">
+    Your Id:          @Model.Id
+    Your Name:        @Model.name
+    Your Email:       @Model.email
+    Your Contact :    @Model.num
+                        Thank you!
+</pre>
+   
+        <div class="col-sm-offset-2 col-sm-10">
+            <a href="/LoggedIn/EditProfile" class="btn btn-success" style="font-family:'Book Antiqua'; ">Edit Profile</a>
+        </div>
+    
+
+    </div>

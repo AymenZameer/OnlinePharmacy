@@ -1,0 +1,35 @@
+﻿@using OnlinePharmacy.Models
+@{
+    ViewBag.Title = "Search";
+    Layout = "~/Views/Shared/viewlog.cshtml";
+}
+
+<h2>Your results found are:</h2>
+<br/>
+<br />
+    <div class="row">
+        @foreach (Medicine s in Model)
+        {
+            <div class="col-sm-3 col-md-3">
+                <div class="thumbnail" style="width:100%; height:100%;">
+
+                    <a class="fancybox" href="@Url.Content(s.image)">    <img src="@Url.Content(s.image)" /></a>
+                    <div class="caption">
+                        <h4> @s.name </h4>
+                        <p style="font-family:'Book Antiqua'; font-size:20px">@s.description</p>
+
+                        <p>@Html.ActionLink("View", "Meddet", new { id = s.Id }, new { @class = "btn btn-info" }) </p>
+                    </div>
+                </div>
+            </div>
+
+        }
+    </div>
+
+<script>
+    $(document).ready(function () {
+        $('.fancybox').fancybox({
+
+        });
+    });
+</script>

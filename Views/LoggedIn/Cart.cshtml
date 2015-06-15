@@ -1,0 +1,38 @@
+﻿@{
+    ViewBag.Title = "Cart";
+    Layout = "~/Views/Shared/viewlog.cshtml";
+}
+
+<h2>Cart</h2>
+@using OnlinePharmacy.Models
+<h1>Order Your Medicines:</h1>
+<div class="container">
+    <form class="form-horizontal" method="post" action="/LoggedIn/AddToCart">
+        <div class="form-group">
+            <label for="name" class="col-sm-2 control-label">Enter Quantity</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" name="quantity" placeholder="2" required>
+                <br />
+                <br />
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="pass" class="col-sm-2 control-label">Enter Date</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" name="orddate" placeholder="01/01/2005" required size="11">
+                <br />
+                <br />
+            </div>
+        </div>
+        <input type="hidden" class="form-control" name="cid" value="@ViewBag.User.Id">
+        <input type="hidden" class="form-control" name="medid" value="@Model.Id">
+        <input type="hidden" class="form-control" name="price" value="@Model.price">
+
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-success" style="font-family:'Book Antiqua'; ">Add to Cart</button>
+
+            </div>
+        </div>
+    </form>
+</div>

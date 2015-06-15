@@ -1,0 +1,51 @@
+﻿@{
+    ViewBag.Title = "Statuses";
+    Layout = "~/Views/Shared/viewlog.cshtml";
+}
+@using OnlinePharmacy.Models;
+
+<h2>Status of your orders</h2>
+<div class="wrapper" >
+    <div class="col-lg-12">
+        <table class="table table-striped" style="font-size:20px; font-family:'Book Antiqua'">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>QUANTITY </th>
+                    <th>PRICE</th>
+                    <th>MEDICINE NAME</th>
+                    <th>DATE</th>
+                    <th>STATUS</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (Order s in Model)
+                {
+
+                    <tr>
+                        
+                        <td>@s.Id</td>
+                        <td>@s.quantity  </td>
+                        <td>@s.price</td>
+                        <td>@s.Medicine.name</td>
+                        <td>@s.orddate</td>
+                        <td>@s.status</td>
+
+                        <td><button onclick="showDialog(@s.Id)" class="btn btn-warning">Cancel Order</button></td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+        <script>
+            function showDialog(x) {
+                var r = confirm("Do you want to cancel this order?");
+                if (r == true)
+                    window.location.assign("/LoggedIn/CancelOrder?id=" + x);
+                else
+                    ;
+            }
+        </script>
+    </div>
+</div>

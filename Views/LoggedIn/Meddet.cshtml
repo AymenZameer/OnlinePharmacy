@@ -1,0 +1,23 @@
+﻿@{
+    ViewBag.Title = "Meddet";
+    Layout = "~/Views/Shared/viewlog.cshtml";
+}
+@model OnlinePharmacy.Models.Medicine
+<div class="row" style="padding-top:10em; ">
+    <div class="" style="float:left">
+        <img src="@Url.Content(@Model.image)" />
+    </div>
+    <pre style="font-family:'Book Antiqua'; font-size:20px">
+        Medicine Id:       @Model.Id
+        Medicine Name:     @Model.name
+        Medicine Category:  @Model.category
+        Medicine Price: @Model.price
+        Medicine Potency: @Model.potency
+        Medicine company:@Model.company
+        Medicine Description: @Model.description    
+             @Html.ActionLink("Order", "Order", new { id = Model.Id }, new { @class = "btn btn-info col-sm-8"  })             
+             @Html.ActionLink("Add To Cart", "Cart", new { id = Model.Id }, new { @class = "btn btn-info col-sm-8"  })             
+    </pre>
+    
+    
+</div>
